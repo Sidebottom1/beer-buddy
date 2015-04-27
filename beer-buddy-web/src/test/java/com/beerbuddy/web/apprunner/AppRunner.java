@@ -1,3 +1,4 @@
+//Application main class.
 package com.beerbuddy.web.apprunner;
 
 import org.springframework.boot.SpringApplication;

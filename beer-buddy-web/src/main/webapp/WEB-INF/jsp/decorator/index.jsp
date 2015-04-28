@@ -99,10 +99,43 @@
 			closePopup();
 		}
 		
+		function login(){
+			var arr = {username: jQuery('#username_in').val(), password: jQuery('#password_in').val()};
+			
+			jQuery.ajax({
+				url: "/login",
+				method: "POST",
+				contentType: 'application/json; charset=utf-8',
+				data: JSON.stringify(arr),
+			}).done(function(data){
+				if('lastLogin' in data){
+					popup.hide();
+					location.reload();
+				}
+				else{
+					alert('hello');
+					jQuery('#login_error').html("Invalid credentials...");
+				}
+			});
+		}
+		
 		function showLoginForm(){
 			content = '<h1>Log In</h1>';
+			content += '<div id = "login_error" style = "color:red;"></div>';
+			content += '<br/>';
+			content += '<h4>Username</h4>';
+			content += '<input type = "text" id = "username_in"/>';
+			content += '<br/>';
+			content += '<h4>Password</h4>';
+			content += '<input type = "password" id = "password_in"/>';
+			content += '<br/>';
+			content += '<br/>';
+			content += '<div class = "longButtonBlue" onclick = "login()">Log In</div>';
+			
 			
 			popup.setContent(content).show();
+			jQuery('h1').css("color","#fff");
+			jQuery('.popup').css("background-color","#333");
 		}
 		
 		function checkLoggedIn(){
@@ -124,9 +157,9 @@
 				content += '<br/>';
 				content += '<img src = "/static/imgs/decoration/beer-icon.png" style = "width:50%; height:auto; margin-left:25%;"/>';
 				content += '<br/>';
-				content += '<div class = "longButtonYellow" value = "Cancel" onclick = "showLoginForm()">Log In</div>';
+				content += '<div class = "longButtonYellow" onclick = "showLoginForm()">Log In</div>';
 				content += '<br/>';
-				content += '<div class = "longButtonBlue" value = "Cancel" onclick = "signupFromPopup()">Sign Up</div>';
+				content += '<div class = "longButtonBlue" onclick = "signupFromPopup()">Sign Up</div>';
 				content += '</div>';
 				surprise();
 			}

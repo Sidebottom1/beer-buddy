@@ -46,8 +46,8 @@
     <script src="<c:url value='/static/bower_components/angular-ui-router/release/angular-ui-router.min.js'/>"></script>
     <script src="<c:url value='/static/bower_components/hammerjs/hammer.js'/>"></script>
     <script src="<c:url value='/static/bower_components/angular-material/angular-material.js'/>"></script>
+	<script src="<c:url value='/static/js/masonry.js'/>"></script>
 	<script src="<c:url value='/static/js/popup.js'/>"></script>
-	
 	
 	<script type="text/javascript">
 		
@@ -102,20 +102,22 @@
 		function login(){
 			var arr = {username: jQuery('#username_in').val(), password: jQuery('#password_in').val()};
 			
-			jQuery.ajax({
+			var request = jQuery.ajax({
 				url: "/login",
 				method: "POST",
 				contentType: 'application/json; charset=utf-8',
 				data: JSON.stringify(arr),
-			}).done(function(data){
+			});
+			
+			request.done(function(data){
 				if('lastLogin' in data){
 					popup.hide();
 					location.reload();
 				}
-				else{
-					alert('hello');
-					jQuery('#login_error').html("Invalid credentials...");
-				}
+			});
+			
+			request.fail(function(){
+				jQuery('#login_error').html("Invalid credentials...");
 			});
 		}
 		
@@ -133,9 +135,26 @@
 			content += '<div class = "longButtonBlue" onclick = "login()">Log In</div>';
 			
 			
-			popup.setContent(content).show();
-			jQuery('h1').css("color","#fff");
-			jQuery('.popup').css("background-color","#333");
+			jQuery.when(popup.setContent(content).show()).done(function(){
+				jQuery('#username_in').bind('keypress', function(e)
+					{
+					     if(e.keyCode == 13)
+					     {
+					        jQuery('#password_in').focus();
+					     }
+					});
+				
+				jQuery('#password_in').bind('keypress', function(e)
+					{
+					     if(e.keyCode == 13)
+					     {
+					        login();
+					     }
+					});
+				
+				jQuery('h1').css("color","#fff");
+				jQuery('.popup').css("background-color","#333");
+			});
 		}
 		
 		function checkLoggedIn(){
@@ -166,6 +185,27 @@
 			else{
 			
 			}
+		}
+		
+		//Masonry
+		
+		function msnStart(){
+			var container = document.querySelector('.masonry_det');
+			var msnry = new Masonry( container, {
+			  columnWidth: 60
+			});
+	
+			eventie.bind( container, 'click', function( event ) {
+			  // don't proceed if item was not clicked on
+			  if ( !classie.has( event.target, 'item' ) ) {
+				alert('hello');
+			    return;
+			  }
+			  // change size of item via class
+			  msnry.remove( event.target );
+			  // trigger layout
+			  msnry.layout();
+			});
 		}
 		
 	</script>

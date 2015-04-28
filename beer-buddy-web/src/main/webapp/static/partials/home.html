@@ -17,7 +17,35 @@
 		<section ng-show="showBeer">
 			<!-- <md-subheader class="md-primary">Beer</md-subheader> -->
 			<md-list>
-		      <md-item ng-repeat="beer in beers">
+			
+			<div class = "masonry_det">
+		      <md-item ng-repeat="beer in beers" style = "width:100%;">
+		      		<div id = "item" style = "padding:3px; background-color:#FFD685; display:block; float:left; width:auto; height:auto; border-radius:10px; margin-left:10px; margin-top:10px; border:1px solid #FFFF99;">
+		        		<img ng-src="{{beer.imageUrl}}" class="face" alt="{{beer.name}}">
+		        		<span class="pull-right" ng-show="user.isLoggedIn">
+			              	<md-icon ng-show="beer.ranked"
+			              		icon="/static/imgs/svg/ic_favorite_24px.svg" >
+			              	</md-icon>
+			              	<md-button ng-show="! beer.ranked" ng-click="addToRank(beer)" aria-label="Add to Favorites">
+			              		<md-icon icon="/static/imgs/svg/ic_favorite_outline_24px.svg"></md-icon>
+			              	</md-button>
+			              </span>
+			              <div style = "width:auto; height:auto; background-color:#fff; margin:0 auto; margin-bottom:5px; border-radius:5px; padding:5px;">
+			              <a style = "color:#333;" href = "https://www.google.com/?gws_rd=ssl#q={{beer.name}}"><strong>{{beer.name}}</strong></a>
+			              <br/>
+			              {{beer.brewer}} 
+			              <br/>
+			              ABV: {{beer.abv}}
+			              <br/>
+			              {{beer.category}} - {{beer.type}}
+			              </div>
+		        	
+		        	</div>
+		      </md-item>
+		     </div>
+		      
+		      <!--
+		      <md-item ng-repeat="beer in beers" class  >
 		        <md-item-content layout="row">
 		        	<section class="md-tile-left" flex="10">
 		        		<img ng-src="{{beer.imageUrl}}" class="face" alt="{{beer.name}}">
@@ -37,7 +65,6 @@
 			              <h4>{{beer.category}} - {{beer.type}} </h4>
 			          </div>
 			          <div flex>
-			          <!-- 
 			            	<div>
 			            		<svg width="970">
 			            			<circle r="60" id="nytg-circle309" cx="75" cy="75" style="fill: grey; stroke-width: 1px; stroke: rgb(126, 150, 93);"></circle>
@@ -45,10 +72,10 @@
 									<circle r="25" id="nytg-circle309" cx="325" cy="75" style="fill: rgb(156, 175, 132); stroke-width: 1px; stroke: rgb(126, 150, 93);"></circle>
 									<text x="50" y="85" fill="white" font-size="40px">75</text></svg>
 			            	</div>
-			           -->
 			          </div>
 		        </md-item-content>
 		      </md-item>
+		      -->
 		    </md-list>
 		    <md-button ng-click="loadMore();" ng-show="hasMore();"
 			        		class="md-fab md-primary face" aria-label="Load More">

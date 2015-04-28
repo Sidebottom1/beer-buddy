@@ -204,3 +204,9 @@ angular.module('beer-buddy-app')
 	
 }])
 ;
+
+var init = function () {
+	msnStart();
+};
+
+init();

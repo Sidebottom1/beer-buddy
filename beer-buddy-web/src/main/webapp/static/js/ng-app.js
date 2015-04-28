@@ -30,6 +30,12 @@ app.config(['$stateProvider', '$urlRouterProvider', "$httpProvider",
 	      templateUrl: "/static/partials/login.html",
 	      controller: "LogoutController"
 	    })
+	    
+	    .state('signup', {
+	    	url: "/signup",
+	    	templateUrl: "/static/partials/signup.html",
+	    	controller: "LoginController"
+	    })
 	  ;
 	
 }])

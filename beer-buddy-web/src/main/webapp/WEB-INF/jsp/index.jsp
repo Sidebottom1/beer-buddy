@@ -1,6 +1,7 @@
 <%@ include file="/WEB-INF/jsp/common/taglibs.jsp" %>
 
 <head>
+
 <title>Beer Buddy</title>
 </head>
 <body>

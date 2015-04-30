@@ -7,6 +7,8 @@ public class NewUserRequest {
     protected String password;
     protected String name;
     protected String email;
+    protected String question;
+    protected String response;
 
     public String getEmail() {
 		return email;
@@ -31,5 +33,11 @@ public class NewUserRequest {
 	}
     public void setUsername(String username) {
 		this.username = username;
+	}
+    public void setQuestion(String question) {
+		this.question = question;
+	}
+    public void setResponse(String response) {
+		this.response = response;
 	}
 }

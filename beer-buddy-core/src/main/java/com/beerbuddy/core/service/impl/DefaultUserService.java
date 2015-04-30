@@ -62,6 +62,24 @@ public class DefaultUserService implements UserService, CrytpoFunctions {
 	}
 	
 	@Override
+	public synchronized User updateUser(String username, String question, String response, String password) throws QuestionResponseMatchException {
+		DefaultUser userExists = userRepository.findByUsername(username);
+		if( userExists != null ) {
+			throw new QuestionResponseMatchException(username, question, response);
+		}
+		
+		DefaultUser user = new DefaultUser();
+		user.setUsername(username);
+		
+		String salt = KeyGenerators.string().generateKey();
+		user.setSalt(salt);
+		user.setPassword(encryptPassword(password, salt));
+		
+		userRepository.save(user);
+		return new UserWrapper(user);
+	}
+	
+	@Override
 	public User setUserProfile(User user, UserProfile profile) {
 		user.setProfile(profile);
 		profile.setUser(user);

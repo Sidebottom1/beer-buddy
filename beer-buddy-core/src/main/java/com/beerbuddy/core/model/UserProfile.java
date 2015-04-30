@@ -25,6 +25,12 @@ public class UserProfile implements User {
     
     protected String email;
     
+    protected String question;
+    
+    protected String response;
+    
+    protected String password;
+    
     @OneToOne
     @JoinColumn(name="user_id")
     protected DefaultUser user;
@@ -62,6 +68,23 @@ public class UserProfile implements User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getQuestion() {
+		return question;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	public String getResponse() {
+		return response;
+	}
+	public void setResponse(String response) {
+		this.response = response;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Set<UserBeerRank> getBeerRankings() {
 		return beerRankings;
 	}
@@ -108,6 +131,8 @@ public class UserProfile implements User {
     	this.email = profile.email;
     	this.name = profile.name;
     	this.user = profile.user;
+    	this.question = profile.question;
+    	this.response = profile.response;
 	}
 	
 }

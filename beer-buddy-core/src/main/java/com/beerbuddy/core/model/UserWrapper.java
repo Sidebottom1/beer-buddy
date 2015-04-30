@@ -48,6 +48,14 @@ public class UserWrapper implements User {
     public String getName() {
     	return user.getName();
     }
+    @Override
+    public String getQuestion() {
+    	return user.getQuestion();
+    }
+    @Override
+    public String getResponse() {
+    	return user.getResponse();
+    }
 
     @Override
     public Long getProfileId() {
@@ -65,4 +73,10 @@ public class UserWrapper implements User {
     protected User getUser() {
     	return user;
     }
+
+	@Override
+	public void setPassword(String password) {
+		this.user.setPassword(password);
+		
+	}
 }

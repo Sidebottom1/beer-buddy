@@ -14,8 +14,14 @@ public interface User {
 	
 	public String getEmail();
 
+	public String getQuestion();
+
+	public String getResponse();
+
+	public void setPassword(String password);
 	@JsonIgnore
 	public Long getProfileId();
 	
 	public void setProfile(UserProfile profile);
+
 }

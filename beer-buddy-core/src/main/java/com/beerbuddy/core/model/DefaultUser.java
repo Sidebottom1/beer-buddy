@@ -45,6 +45,17 @@ public class DefaultUser implements User {
     	return profile.getName();
     }
     
+    @Override
+    public String getQuestion() {
+    	return profile.getQuestion();
+    }
+    
+    @Override
+    public String getResponse() {
+    	return profile.getResponse();
+    }
+    
+    
 	public long getId() {
 		return id;
 	}

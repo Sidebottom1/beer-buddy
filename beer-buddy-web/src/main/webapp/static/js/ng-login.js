@@ -11,6 +11,7 @@ angular.module('beer-buddy-app')
 
 	$scope.user = {};
 	$scope.newUser = {};
+	$scope.passwordReset = {};
 	$rootScope.user = $scope.user;
 	
 	var clearErrors = function() {
@@ -23,6 +24,8 @@ angular.module('beer-buddy-app')
 		$scope.signupComplete = false;
 		$scope.signupInProgress = false;
 		$scope.loginInProgress = false;
+		$scope.passwordResetComplete = false;
+		$scope.passwordResetInProgress = false;
 	};
 	clearFlags();
 	
@@ -71,6 +74,35 @@ angular.module('beer-buddy-app')
 		}
 	};
 	
+	$scope.passwordReset = function() {
+		clearErrors();
+		if( $scope.passwordResetForm.$valid ) {
+			$scope.passwordResetInProgress = true;
+			new PasswordReset($scope.passwordReset).$save(function(response) {
+				console.log(response);
+				$scope.passwordResetComplete = true;
+				$scope.passwordResetInProgress = false;
+				$scope.passwordReset = {};
+			}, function(error) {
+				console.log(error);
+				if( error.data.error ) {
+					$scope.passwordResetForm.serverError = error.data || {};
+					$scope.passwordResetForm.username.$error.serverError = error.data.error; 
+					$scope.passwordResetForm.username.$error.serverErrorMessage = error.data.message;
+					$scope.passwordResetForm.question.$error.serverError = error.data.error; 
+					$scope.passwordResetForm.question.$error.serverErrorMessage = error.data.message;
+					$scope.passwordResetForm.response.$error.serverError = error.data.error; 
+					$scope.passwordResetForm.response.$error.serverErrorMessage = error.data.message;
+					$scope.passwordResetForm.email.$error.serverError = error.data.error; 
+					$scope.passwordResetForm.email.$error.serverErrorMessage = error.data.message;
+					$scope.passwordResetForm.password.$error.serverError = error.data.error; 
+					$scope.passwordResetForm.password.$error.serverErrorMessage = error.data.message;
+				}
+				$scope.passwordResetInProgress = false;
+			});
+		}
+	};
+
 	
 	}])
 

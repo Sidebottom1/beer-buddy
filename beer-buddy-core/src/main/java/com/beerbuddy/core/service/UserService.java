@@ -9,11 +9,14 @@ import com.beerbuddy.core.model.User;
 import com.beerbuddy.core.model.UserBeerRank;
 import com.beerbuddy.core.model.UserProfile;
 import com.beerbuddy.core.service.impl.UserAlreadyExistsException;
+import com.beerbuddy.core.service.impl.QuestionResponseMatchException;
 
 
 public interface UserService {
 
 	public User createUser(String username, String password) throws UserAlreadyExistsException;
+
+	public User updateUser(String username, String question, String response, String password) throws QuestionResponseMatchException;
 	
 	public User setUserProfile(User user, UserProfile profile);
 	

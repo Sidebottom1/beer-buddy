@@ -52,6 +52,8 @@
 				        <span>Sign Up Today!</span>
 				      </h2>
 				    </md-toolbar>
+				    
+				    
 					<form style="padding: 20px;" name="signupForm">
 						<div class="text-md-green-primary" ng-show="signupComplete"> 
 							Congratulations! You are now a beer buddy! <br> Please login in continue.
@@ -86,13 +88,115 @@
 							        </div>
 								 -->
 							</md-input-container>
+							
+							
+							<md-input-container>
+								<md-text-float label="Question" ng-model="newUser.question" required name="question"> 
+								</md-text-float>
+								<!-- 
+								 <div ng-messages="signupForm.question.$error" class="text-md-warn">
+							          <div ng-message="required">This is required.</div>
+							        </div>
+								 -->
+							</md-input-container>
+							
+							<md-input-container>
+								<md-text-float label="Response" ng-model="newUser.response" required name="response"> 
+								</md-text-float>
+								<!-- 
+								 <div ng-messages="signupForm.response.$error" class="text-md-warn">
+							          <div ng-message="required">This is required.</div>
+							        </div>
+								 -->
+							</md-input-container>
+							
+							
 							<md-input-container>
 							<div>
 								<md-text-float label="Password" type="password" ng-model="newUser.password" required name="password"></md-text-float>
 							</div>
 							</md-input-container>
+							Age: <input type="number" size="6" name="age" min="21" max="99" value="21"><br>
 						<md-button ng-click="submitSignup();" ng-disabled="signupInProgress" md-theme="green" class="md-raised md-primary">Sign up</md-button>
 					</form>
+
+				</md-card>
+				<md-card flex="30">
+
+					<md-toolbar>
+				      <h2 class="md-toolbar-tools">
+				        <span>Reset your password</span>
+				      </h2>
+				    </md-toolbar>
+
+					<form style="padding: 20px;" name="passwordResetForm">
+						<div class="text-md-green-primary" ng-show="passwordResetComplete"> 
+							Congratulations! Your password was successfully reset! <br> Please login in continue.
+						</div>
+						<div ng-show="passwordResetForm.serverError"
+							class="text-md-warn"> 
+							{{passwordResetForm.serverError.message}} 
+						</div>
+							<md-input-container>
+								<md-text-float label="Email" ng-model="passwordReset.email" required type="email" name="email">
+								</md-text-float>
+								<!-- 
+								 <div ng-messages="passwordResetForm.email.$error" class="text-md-warn">
+							          <div ng-message="required">This is required.</div>
+							          <div ng-message="email">Please enter a valid email.</div>
+							        </div>
+								 -->
+							</md-input-container>
+							
+							<md-input-container>
+								<md-text-float label="Username" ng-model="passwordReset.username" required name="username"> 
+								</md-text-float>
+								<!-- 
+								 <div ng-messages="passwordResetForm.username.$error" class="text-md-warn">
+							          <div ng-message="required">This is required.</div>
+							        </div>
+								 -->
+							</md-input-container>
+							
+							
+							<md-input-container>
+								<md-text-float label="Question" ng-model="passwordReset.question" required name="question"> 
+								</md-text-float>
+								<!-- 
+								 <div ng-messages="passwordResetForm.question.$error" class="text-md-warn">
+							          <div ng-message="required">This is required.</div>
+							        </div>
+								 -->
+							</md-input-container>
+							
+							<md-input-container>
+								<md-text-float label="Response" ng-model="passwordReset.response" required name="response"> 
+								</md-text-float>
+								<!-- 
+								 <div ng-messages="passwordResetForm.response.$error" class="text-md-warn">
+							          <div ng-message="required">This is required.</div>
+							        </div>
+								 -->
+							</md-input-container>
+														
+							<md-input-container>
+							<div>
+								<md-text-float label="New password" type="password" ng-model="passwordReset.password" required name="password">
+								</md-text-float>
+							</div>
+							</md-input-container>
+
+							<md-input-container>
+							<div>
+								<md-text-float label="Re-type your password" type="password" ng-model="passwordReset.password_retype" required name="password_retype">
+								</md-text-float>
+							</div>
+							</md-input-container>
+							
+						<md-button ng-click="submitpasswordReset();" ng-disabled="passwordResetInProgress" md-theme="green" class="md-raised md-primary">Apply</md-button>
+					</form>
+
+
 				</md-card>
 			</div>
 		</md-card> 

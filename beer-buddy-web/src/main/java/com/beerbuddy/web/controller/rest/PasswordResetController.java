@@ -16,7 +16,7 @@ import com.beerbuddy.web.controller.ui.model.BeerMapper;
 import com.beerbuddy.web.controller.ui.model.PasswordResetRequest;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class PasswordResetController implements BeerMapper {
 
 	@Autowired

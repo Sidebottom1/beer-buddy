@@ -26,6 +26,15 @@ angular.module('beer-buddy-app')
 				$scope.lastPage = page.last;
 			});
 		};
+		
+		$scope.prevPage = function() {
+			BeerService.getPage($scope.page - 1, function(page) {
+				$scope.beers = angular.copy(page.content, $scope.beers);
+				$scope.page = page.number;
+				$scope.totalPages = page.totalPages;
+				$scope.lastPage = page.last;
+			});
+		};
 	
 		//load the first page...
 		$scope.nextPage();
@@ -82,6 +91,9 @@ angular.module('beer-buddy-app')
 					 $scope.loadMore = function() {
 						 $scope.nextPageOfPeople();
 					 };
+					 $scope.goBack = function() {
+						 $scope.prevPageOfPeople();
+					 };
 					 $scope.showBeer = false;
 					 $scope.showUsersBeer = false;
 					 $scope.showPeople = true;
@@ -89,6 +101,9 @@ angular.module('beer-buddy-app')
 					 $scope.nextPageOfUsersBeers();
 					 $scope.loadMore = function() {
 						 $scope.nextPageOfUsersBeers();
+					 };
+					 $scope.goBack = function() {
+						 $scope.prevPageOfUsersBeers();
 					 };
 					 $scope.showBeer = false;
 					 $scope.showUsersBeer = true;
@@ -120,6 +135,10 @@ angular.module('beer-buddy-app')
 			$scope.nextPage();
 		};
 		
+		$scope.goBack = function() {
+			$scope.prevPage();
+		};
+		
 		$scope.people = $scope.people || [];
 		$scope.nextPageOfPeople = function() {
 			UserService.getPage($scope.page + 1, function(page) {
@@ -130,8 +149,26 @@ angular.module('beer-buddy-app')
 			});
 		};
 		
+		$scope.prevPageOfPeople = function() {
+			UserService.getPage($scope.page - 1, function(page) {
+				$scope.people = angular.copy(page.content, $scope.people);
+				$scope.page = page.number;
+				$scope.totalPages = page.totalPages;
+				$scope.lastPage = page.last;
+			});
+		};
+		
 		$scope.nextPageOfUsersBeers = function() {
 			UserService.getUsersBeers($scope.page + 1, function(page) {
+				$scope.beers = angular.copy(page.content, $scope.beers);
+				$scope.page = page.number;
+				$scope.totalPages = page.totalPages;
+				$scope.lastPage = page.last;
+			});
+		};
+		
+		$scope.prevPageOfUsersBeers = function() {
+			UserService.getUsersBeers($scope.page - 1, function(page) {
 				$scope.beers = angular.copy(page.content, $scope.beers);
 				$scope.page = page.number;
 				$scope.totalPages = page.totalPages;

@@ -1,0 +1,142 @@
+.backdrop {
+	color: #fff;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgb(255, 255, 255);
+	opacity: 0.7;
+	z-index: 1500;
+	display: none;
+}
+.popup{
+	color:#333;
+}
+
+.popup {
+    position: absolute;
+    display: none;
+    z-index: 1501;
+    border-radius: 10px;
+    box-shadow: #555 0px 1px 4px 4px;
+    padding: 20px;
+    color:#333;
+	background-color: #FFF;
+}
+
+.popup input[type=text] {
+	background-color:#fff; 
+	border:1px solid #333;
+	color:#333;
+	border-radius:5px;
+	height:30px;
+	width:100%;
+}
+
+.popup input[type=password] {
+	background-color:#fff; 
+	border:1px solid #333;
+	color:#333;
+	border-radius:5px;
+	height:30px;
+	width:100%;
+}
+
+.popup select {
+	height:30px;
+	width:100%;
+	color:#fff;
+	background-color:#333;
+}
+
+.progressbar {
+	background: url('../render/images/loader.gif');
+	width: 200px;
+	height: 20px;
+}
+
+.popup-close-btn {
+	clear: both;
+}
+
+.popup h1, h2, h3 {
+	margin: 0;
+}
+
+.popup .field {
+	margin-bottom: 20px;
+}
+
+.popup table, .popup tbody {
+	border:0;
+}
+
+.popup tr:hover td {
+	background: none;
+}
+
+.spinner {
+	background: url('loader.gif') no-repeat;
+	background-position: center;
+	background-color: #000;
+	width: 48px;
+	height: 48px;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+	position: fixed;
+	border-radius: 8px;
+	z-index: 1502;
+}
+
+.spinner-container {
+	background-color: #333;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+	width: 100%;
+	height: 100%;
+}
+
+h1{
+	font-size:30px;
+}
+
+h2{
+	font-size:20px;
+}
+
+h4{
+	color:#fff;
+	font-size:15px;
+}
+
+.longButtonBlue{
+	width:90%;
+	cursor: pointer;
+	margin:0 auto;
+	padding:10px;
+	color:#fff;
+	border-radius:3px;
+	background-color: #00CCFF;
+	text-align: center;
+}
+.longButtonBlue:hover{
+	background-color: #22DDFF;
+}
+
+.longButtonYellow{
+	width:90%;
+	cursor: pointer;
+	margin:0 auto;
+	padding:10px;
+	color:#fff;
+	border-radius:3px;
+	background-color: #CC7A00;
+	text-align: center;
+}
+.longButtonYellow:hover{
+	background-color: #D18719;
+}
+

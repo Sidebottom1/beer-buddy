@@ -116,7 +116,34 @@
 								<md-text-float label="Password" type="password" ng-model="newUser.password" required name="password"></md-text-float>
 							</div>
 							</md-input-container>
-							Age: <input type="number" size="6" name="age" min="21" max="99" value="21"><br>
+							 
+          <select id="day">
+          
+          	 
+          	<script>
+          	function addAges() {
+          		for (var i = 21; i < 101; i++) {
+          			var newElement = document.createElement("option");
+          			newElement.textContent = i;
+          			newElement.value = i;
+          			document.getElementById("day").appendChild(newElement);
+          		}
+          	}
+          	addAges();
+          	</script>
+          	 
+ 
+            <option selected="selected">Select Age </option>
+   
+          </select>
+ 
+          
+ 
+           
+ 
+           
+  
+ 
 						<md-button ng-click="submitSignup();" ng-disabled="signupInProgress" md-theme="green" class="md-raised md-primary">Sign up</md-button>
 					</form>
 
